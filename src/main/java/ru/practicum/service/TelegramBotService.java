@@ -1,6 +1,7 @@
 package ru.practicum.service;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -10,6 +11,7 @@ import ru.practicum.config.BotConfig;
 
 import java.util.List;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class TelegramBotService extends TelegramLongPollingBot {
@@ -43,6 +45,7 @@ public class TelegramBotService extends TelegramLongPollingBot {
     private void startCommandReceived(long chatId, String name) {
 
         String answer = "Hi, " + name + ", nice to meet you!";
+        log.info("Replied to user " + name);
 
         sendMessage(chatId, answer);
     }
@@ -55,7 +58,7 @@ public class TelegramBotService extends TelegramLongPollingBot {
         try {
             execute(message);
         } catch (TelegramApiException e) {
-            throw new RuntimeException(e);
+            log.error("Error occurred: " + e.getMessage());
         }
     }
 
