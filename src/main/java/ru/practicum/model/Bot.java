@@ -8,6 +8,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @Setter
 @ConfigurationProperties(prefix = "bot")
 public class Bot {
-    String name;
-    String token;
+    private String name;
+    private String token;
 }

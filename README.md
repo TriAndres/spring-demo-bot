@@ -1,2 +1,2 @@
-# spring-demo-boot
-spring-demo-boot
+# spring-demo-bot
+spring-demo-bot
